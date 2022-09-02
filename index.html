@@ -7,15 +7,25 @@
     <meta charset="UTF-8">
     <title>BudgetMate</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
-    <script src="app.js"></script>
 </head>
 <body>
-    <div class="sidebar"> 
-        <h4> Your Budget</h4>
-        <h3>Date</h3>
-        <div class="budgetNum"></div>
-        <div id="myChart" style="width:100%; max-width:600px; height:500px;"> </div>
+    <div class="sidebar">
+        <div class="sidebarContent">
+            <h1> Your Budget</h1>
+            <h2 class="date">Date</h2><!--- get current data as month/year here-->
+            <h4 class="budgetNum">300</h4>
+            <div id="myChart"> </div> <!--- hidden by default until-->
+        </div>
     </div>
+    <div class="main">
+        <h1> Track Your Budget</h1>
+        <h2>expense type</h2>
+        <textarea> </textarea>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>

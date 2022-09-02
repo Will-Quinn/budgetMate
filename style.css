@@ -1,4 +1,83 @@
+/* color pallate */
+/* 
+#ffffff backgroud
+#00184c text 1
+#3872a8 text 2
+#2b506f text 3
+ */
+
 html{
-    background-color: grey;
+    background-color: #ffffff;
     opacity: "30%";
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+*{
+   margin:0;
+   padding:0;
+}
+h1,h3, h4{
+    font-size: 56px;
+    color: #00184c;
+}
+h2{
+    font-size: 32px;
+    color: #ffffff ;
+}
+.sidebar{
+    height: 100%;
+    width: 30%;
+    max-width: 30%;
+    align-items: center;
+    justify-content: center;
+    background-color: #3872a8;
+    font-family: 'Bebas Neue', cursive;
+    position:absolute
+}
+.budgetNum{
+    margin-top: 15%;
+}
+#myChart{
+    margin-top: -10%;
+    margin-left: -5%;
+}
+#myChart text {
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+}
+.sidebarContent{
+    margin-top: 25%!important;
+    margin: 0 auto;
+    width: 80%;
+    height: 80%;
+}
+.budgetNum{
+    justify-content: center;
+    text-align: center;
+    background-color: #2b506f;
+    color: #ffffff;
+    width: 30%;
+    border-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
+    box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
+    -webkit-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
+    -moz-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
+}
+#myChart{
+    font-family: 'Source Sans Pro', sans-serif!important;
+}
+.main{
+    float: right;
+    width: 70%;
+    height: 100%;
+    min-height: 100%;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
 }
