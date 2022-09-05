@@ -81,3 +81,9 @@ h2{
     align-items: center;
     justify-content: center;
 }
+table{
+    border-collapse: collapse;
+}
+tr{
+    border-bottom: 1px solid #00184c;
+}

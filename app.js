@@ -5,11 +5,10 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 //set initial values for the chart fields, these need to be updated as data is entered.
-const totalSavings = 5;
-const totalInvestments = 10;
-const totalExpenses = 20;
 
-
+  const totalSavings = 20;
+  const totalInvestments = 2;
+  const totalExpenses = 3;
 //copy/pasted code of google chart.js to initialise a pie chart, I can edit this how I want.
 function drawChart() {
 var data = google.visualization.arrayToDataTable([
@@ -69,3 +68,48 @@ const month = months[monthsNum];
 const year = currentDate.getFullYear();
 //we set the text content of the date element with a template literal just containing ${month} ${year} variables.
 date.textContent = `${month} ${year}`
+
+// function setType(){
+//   const option = document.querySelectorAll('option');
+//   if (option.value == "Savings" ){
+//      const savingsNum = document.querySelector('#valueNum');
+//      totalSavings += savingsNum;
+//      console.log(totalSavings);
+//   }else if (option.value == "Investment" ){
+//      const investmentNum = document.querySelector('#valueNum');
+//      totalInvestments += investmentNum;
+//      console.log(totalInvestments);
+//   } else 
+//   option.value == "Expense" 
+//   const ExpenseNum = document.querySelector('#valueNum');
+//   totalExpenses += ExpenseNum;
+//   console.log(totalExpenses);
+// }
+function updateGraph(){
+
+  //get all the values from the form
+  //update the values adding them to total const totalSavings totalInvestments totalExpenses
+  //update the new butdget (totalInvestments + totalExpenses - totalSavings) 
+  //update the main div with the new table showing all the entries. append a new one each time form is submitted
+  //save to local storage
+  const form = document.getElementById('form');
+  const type = form.elements['etype'].value;
+  const desc = form.elements['text'];
+  const value= form.elements['valueNum'];
+
+  if(type == "Savings"){
+    const savingsNum = document.getElementById('valueNum');
+    totalSavings += savingsNum.value;
+    alert(totalSavings);
+  }else if (type == "Investment" ){
+    const investmentNum = document.getElementById('valueNum');
+    totalInvestments += investmentNum.value;
+    alert(totalInvestments);
+  } else if (type =="Expense"){
+    const ExpenseNum = document.getElementById('valueNum');
+    totalExpenses += ExpenseNum.value;
+    alert(totalExpenses);
+  }
+}
+   const budget = document.getElementById('budgetNum');
+   budget.innerHTML = totalSavings - totalInvestments - totalExpenses;

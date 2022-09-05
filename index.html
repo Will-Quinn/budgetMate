@@ -17,14 +17,35 @@
         <div class="sidebarContent">
             <h1> Your Budget</h1>
             <h2 class="date">Date</h2><!--- get current data as month/year here-->
-            <h4 class="budgetNum">300</h4>
+            <h4 class="budgetNum" id="budgetNum">0</h4>
             <div id="myChart"> </div> <!--- hidden by default until-->
         </div>
     </div>
     <div class="main">
         <h1> Track Your Budget</h1>
         <h2>expense type</h2>
-        <textarea> </textarea>
+        <form name="form" id="form" onsubmit="updateGraph()">
+            <select name="etype" id="dropdown" required>
+            <option value="none" selected disabled hidden>Expense Type</option>
+            <option id="savings" value="Savings">Savings</option>
+            <option id="investment" value="Investment">Investment</option>
+            <option id="expense" value="Expense">Expense</option>
+            </select>
+            <input name="text" type="text" placeholder="Description">
+            <input name="valueNum" id="valueNum" type="number" required>
+            <input type="submit" value="✓">
+        </form>
+        <div class="table">
+            <table class="demo">
+                <tbody>
+                <tr>
+                    <td>2022</td>
+                    <td>wawawa</td>
+                    <td>1000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
