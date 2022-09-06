@@ -1,0 +1,79 @@
+// function setType(){
+//   const option = document.querySelectorAll('option');
+//   if (option.value == "Savings" ){
+//      const savingsNum = document.querySelector('#valueNum');
+//      totalSavings += savingsNum;
+//      console.log(totalSavings);
+//   }else if (option.value == "Investment" ){
+//      const investmentNum = document.querySelector('#valueNum');
+//      totalInvestments += investmentNum;
+//      console.log(totalInvestments);
+//   } else 
+//   option.value == "Expense" 
+//   const ExpenseNum = document.querySelector('#valueNum');
+//   totalExpenses += ExpenseNum;
+//   console.log(totalExpenses);
+// }
+function updateGraph(){
+  //get all the values from the form
+  //update the values adding them to total const totalSavings totalInvestments totalExpenses
+  //update the new butdget (totalInvestments + totalExpenses - totalSavings) 
+  //update the main div with the new table showing all the entries. append a new one each time form is submitted
+  //save to local storage
+  const form = document.getElementById('form');
+  let type = form.elements['etype'].value;
+  const desc = form.elements['text'].value;
+  const value = form.elements['valueNum'].value;
+  alert(value);
+  alert(desc);
+  if(type == "Savings"){
+    totalSavings = value;
+    //alert(totalSavings);
+  }else if (type == "Investment" ){
+    totalInvestments = value;
+    //alert(totalInvestments);
+  } else if (type == "Expense"){
+    totalExpenses  = value;
+    //alert(totalExpenses);
+  }
+  preventDefault();
+}
+   const budget = document.getElementById('budgetNum');
+   budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
+
+   //use local storage to store and update variables
+
+   //submit button, get id, then add event listener to run the function??? ^^^
+
+const tableData = [
+  {
+    id: 1,
+    date: `6/09/22`,
+    desc: `groceries`,
+    value: 2000
+  },
+  {
+    id: 2,
+    date: `6/09/22`,
+    desc: `groceries`,
+    value: 1000
+  },
+]
+
+const tableDiv = document.querySelector('.table');
+
+window.addEventListener('DOMContentLoaded', function(){
+  let displayData = tableData.map(function(item){//parameter item
+    return `<table class="demo">
+          <tbody>
+          <tr>
+              <td>${item.date}</td>
+              <td>${item.desc}</td>
+              <td>$${item.value}</td>
+          </tr>
+          </tbody>
+      </table>`;
+  })
+  displayData=displayData.join("");
+  tableDiv.innerHTML = displayData;
+});
