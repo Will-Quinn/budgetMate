@@ -1,4 +1,15 @@
+function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const data = new FormData(event.target);
+  
+  const formJSON = Object.fromEntries(data.entries());
 
+  alert(JSON.stringify(formJSON));
+}
+
+const form = document.querySelector('.contact-form');
+form.addEventListener('submit', handleFormSubmit);
 //chart
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
@@ -73,3 +84,5 @@ const day = currentDate.getDay();
 
 const budget = document.getElementById('budgetNum');
 budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
+
+

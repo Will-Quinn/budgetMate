@@ -25,17 +25,23 @@
     <div class="main">
         <h1> Track Your Budget</h1>
         <h2>expense type</h2>
-        <form name="form" id="form" onsubmit="updateGraph()">
-            <select name="etype" id="dropdown" required>
-            <option value="none" selected disabled hidden>Expense Type</option>
-            <option id="savings" value="Savings">Savings</option>
-            <option id="investment" value="Investment">Investment</option>
-            <option id="expense" value="Expense">Expense</option>
-            </select>
-            <input name="text" type="text" placeholder="Description">
-            <input name="valueNum" id="valueNum" type="number" required>
-            <input type="submit" value="✓">
-        </form>
+        <section class="contact-form">
+            <form>
+                <input type="radio" name="etype" id="savings" value="savings" />
+                <label for="savings">Savings</label>
+
+                <input type="radio" name="etype" id="investment" value="investment" />
+                <label for="investment">Investment</label>
+
+                <input type="radio" name="etype" id="expense" value="expense" />
+                <label for="expense">Expense</label>
+                <label for="desc">Description</label>
+                <input name="text" type="text" placeholder="Description">
+                <label for="amnt">value</label>
+                <input name="valueNum" id="valueNum" type="number" required>
+                <button type="submit">✓</button>
+            </form>
+        </section>
         <div class="table">
         </div>
     </div>
