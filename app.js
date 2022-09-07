@@ -1,3 +1,33 @@
+var budgetCanvas = document.getElementById("budgetChart");
+
+Chart.defaults.font.family = "Lato";
+Chart.defaults.font.size = 18;
+Chart.defaults.color = "black";
+
+var budgetData = {
+    labels: [
+        "Savings",
+        "Investments",
+        "Expenses",
+    ],
+    datasets: [
+        {
+            data: [1,1,1],
+            backgroundColor: [
+                "#8ac926",
+                "#ffca3a",
+                "#ff595e",
+            ]
+        }]
+};
+
+var pieChart = new Chart(budgetCanvas, {
+  type: 'doughnut',
+  data: budgetData
+});
+
+window.ondoc
+
 function handleFormSubmit(event) {
   event.preventDefault();
   
@@ -5,49 +35,18 @@ function handleFormSubmit(event) {
   
   const formJSON = Object.fromEntries(data.entries());
 
+  var value = formJSON.valueNum;
+  var desc = formJSON.text;
+  var expense = formJSON.etype;
+  alert(JSON.stringify(value));
+  alert(JSON.stringify(desc));
+  alert(JSON.stringify(expense)); 
   alert(JSON.stringify(formJSON));
 }
 
 const form = document.querySelector('.contact-form');
 form.addEventListener('submit', handleFormSubmit);
-//chart
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
-
-//set initial values for the chart fields, these need to be updated as data is entered.
-  var totalSavings = 1;
-  var totalInvestments = 1;
-  var totalExpenses = 1;
-//copy/pasted code of google chart.js to initialise a pie chart, I can edit this how I want.
-function drawChart() {
-var data = google.visualization.arrayToDataTable([
-  //chart labels and the values they need to hold. these will be held in variables so I can dynamically change them.
-  ['budget', 'amount'],
-  ['Savings',totalSavings],
-  ['Investments',totalInvestments],
-  ['Expenses',totalExpenses]
-]);
-//these are the options to change visuals of the chart
-var options = {
-  //piehole only able to be used on 2d chart.
-  pieHole: 0.4,
-  colors: ['green', 'gold', 'red'],
-  backgroundColor: 'none',
-  //these sets the chart to show values not percentages
-  pieSliceText: 'value',
-  'width':600,
-  'height':500,
-  legendTextStyle: { color: '#FFF' },
-  titleTextStyle: { color: '#FFF' },
-  hAxis: {
-    color: '#FFF',
-  }
-};
-
-var chart = new google.visualization.PieChart(document.getElementById('myChart'));
-  chart.draw(data, options);
-}
 
 //array of months, we use this to get set the number value of month to a text value as it is 0 indexed, you can use it to find a month text value in an array
 const months = [

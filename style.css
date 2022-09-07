@@ -69,8 +69,9 @@ h2{
     -webkit-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
     -moz-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
 }
-#myChart{
+.budgetChart{
     font-family: 'Source Sans Pro', sans-serif!important;
+    margin-top: 8%;
 }
 .main{
     float: right;
