@@ -1,8 +1,5 @@
 var budgetCanvas = document.getElementById("budgetChart");
-
-Chart.defaults.font.family = "Lato";
-Chart.defaults.font.size = 18;
-Chart.defaults.color = "black";
+Chart.defaults.color = "#00184c";
 
 var budgetData = {
     labels: [
@@ -12,7 +9,7 @@ var budgetData = {
     ],
     datasets: [
         {
-            data: [1,1,1],
+            data: [1,2,3],
             backgroundColor: [
                 "#8ac926",
                 "#ffca3a",
@@ -23,30 +20,89 @@ var budgetData = {
 
 var pieChart = new Chart(budgetCanvas, {
   type: 'doughnut',
-  data: budgetData
+  data: budgetData,
+  options: {
+      plugins: {
+          legend: {
+              labels: {
+                  // This more specific font property overrides the global property
+                  font: {
+                      size: 24,
+                      family: 'Source Sans Pro', 
+                  }
+              }
+          }
+      }
+  }  
+
 });
+//function to set an item in local storage, just call like this setItem("entryData",JSON.stringify(entryArray)); for example
+const setItem = (key, item) => {
+    localStorage.setItem(key, item);
+};
+//function to get an item from local storage. just enter the key you gave the item.
+const getItem = (key) => {
+    const item = localStorage.getItem(key);
+    return JSON.parse(item);
+};
 
-window.ondoc
+//the get data function gets the form entries using getElementById for the text/number values, for the radio value,
+//I had to select all the elements with the name radio, then loop through where type === radio and that element was checked (selected)
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  
-  const data = new FormData(event.target);
-  
-  const formJSON = Object.fromEntries(data.entries());
+//these would be that values that get passed in to the entry object.
+//the entry object would then be pushed into an array and then assigned an id depening on the array index.
 
-  var value = formJSON.valueNum;
-  var desc = formJSON.text;
-  var expense = formJSON.etype;
-  alert(JSON.stringify(value));
-  alert(JSON.stringify(desc));
-  alert(JSON.stringify(expense)); 
-  alert(JSON.stringify(formJSON));
+//the array is then set in localstorage with the setItem function
+//the item is console logged using getItem to retrieve it from local storage to confirm its been stored
+
+function getData(){
+    let inputDescription = document.getElementById("desc");
+    let inputValue = document.getElementById("valueNum");
+    let radios = document.getElementsByName("radio");
+    let radioChecked;
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].type === "radio" && radios[i].checked) {
+            // get value, set checked flag or do whatever you need to
+            radioChecked = radios[i].value;       
+        }
+    }
+    const entry={
+       "date":tableDate,
+        "radioChecked":radioChecked,
+        "inputDescription":inputDescription.value,
+        "inputValue":inputValue.value,
+    };
+    let entryArray = [];
+    entryArray.push(entry);
+    entryArray = entryArray.map((item, index) => ({ ...item, "id": index + 1 }))
+    storeData(entryArray);
+}  
+function storeData(data){
+    setItem("entryData",JSON.stringify(data));
+    const item = getItem("entryData");
+
+    const parsedEntry = JSON.parse(JSON.stringify(item));
+    console.log(parsedEntry);
 }
+// function updateGraph(){
+//     const item = getItem("entryData");
+//     if(item.radioChecked == "savings"){
+//         totalSavings += item.inputValue;
+//         //alert(totalSavings);
+//     }else if (type == "Investment" ){
+//         totalInvestments = value;
+//         //alert(totalInvestments);
+//     } else if (type == "Expense"){
+//         totalExpenses  = value;
+//         //alert(totalExpenses);
+//     }
+//     preventDefault();
+// }
 
-const form = document.querySelector('.contact-form');
-form.addEventListener('submit', handleFormSubmit);
+// function updateTable(){
 
+// }
+let tableDate = new Date().toLocaleString().split(',')[0];
 
 //array of months, we use this to get set the number value of month to a text value as it is 0 indexed, you can use it to find a month text value in an array
 const months = [

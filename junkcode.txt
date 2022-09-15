@@ -77,3 +77,23 @@ window.addEventListener('DOMContentLoaded', function(){
   displayData=displayData.join("");
   tableDiv.innerHTML = displayData;
 });
+//   const objArray = [];
+
+//   function handleFormSubmit(event) {
+//     event.preventDefault();
+    
+//     const data = new FormData(event.target);
+    
+//     const formJSON = Object.fromEntries(data.entries());
+//     load();
+//     formData();
+//   }
+//       function load(){
+//       objArray = JSON.parse(localStorage.getItem("formData")) || [];
+//     }
+//     function formData() {
+//       objArray.push(formJSON);
+//       localStorage.setItem("formData", JSON.stringify(objArray));
+//     }
+// const form = document.querySelector('.contact-form');
+// form.addEventListener('submit', handleFormSubmit);
