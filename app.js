@@ -66,24 +66,20 @@ function getData(){
             radioChecked = radios[i].value;       
         }
     }
+    let existingEntries = JSON.parse(JSON.stringify(getItem("allEntries")));
+    if(existingEntries == null) existingEntries = [];
     const entry={
        "date":tableDate,
         "radioChecked":radioChecked,
         "inputDescription":inputDescription.value,
         "inputValue":inputValue.value,
     };
-    let entryArray = [];
-    entryArray.push(entry);
-    entryArray = entryArray.map((item, index) => ({ ...item, "id": index + 1 }))
-    storeData(entryArray);
+    setItem("entry", JSON.stringify(entry));
+    existingEntries.push(entry);
+    existingEntries = existingEntries.map((item, index) => ({ ...item, "id": index + 1 }))
+    setItem("allEntries", JSON.stringify(existingEntries));
 }  
-function storeData(data){
-    setItem("entryData",JSON.stringify(data));
-    const item = getItem("entryData");
 
-    const parsedEntry = JSON.parse(JSON.stringify(item));
-    console.log(parsedEntry);
-}
 // function updateGraph(){
 //     const item = getItem("entryData");
 //     if(item.radioChecked == "savings"){
