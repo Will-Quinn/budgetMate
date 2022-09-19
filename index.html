@@ -36,9 +36,10 @@
 
                 <input type="radio" name="radio" id="expense" value="expense" />
                 <label for="expense">Expense</label>
-                <br>
+                <br><br>
                 <label for="desc">Description</label>
                 <input name="text" type="text" id="desc">
+                <br><br>
                 <label for="amnt">value</label>
                 <input name="valueNum" id="valueNum" type="number" required>
                 <button onclick="getData()" type="button" alt="submit">✓</button>
@@ -57,6 +58,7 @@
         <div class="table">
 
         </div>
+        <button onclick="resetData()" type="button" alt="reset data" class="reset">Reset All Data</button>
     </div>
     <script src="app.js"></script>
 </body>

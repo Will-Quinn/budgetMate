@@ -43,9 +43,7 @@ h2{
     font-family: 'Bebas Neue', cursive;
     position:absolute
 }
-.budgetNum{
-    margin-top: 15%;
-}
+
 #myChart{
     margin-top: -10%;
     margin-left: -5%;
@@ -69,7 +67,7 @@ h2{
     border-radius: 10px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
-
+    margin-top:3%;
 }
 .budgetChart{
     font-family: 'Source Sans Pro', sans-serif!important;
@@ -83,6 +81,7 @@ h2{
     background-color: #ffffff;
     align-items: center;
     justify-content: center;
+    text-align:center;
 }
 .formDiv{
     justify-content: center;
@@ -114,6 +113,9 @@ input[type='text'], [type='number']{
     padding: 8px;
     color: #00184c;
 }
+.reset{
+    width: max-content;
+}
 table {
   font-family: arial, sans-serif;
   width: 100%;
@@ -143,4 +145,7 @@ button{
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
+}
+.table{
+    text-align:center;
 }

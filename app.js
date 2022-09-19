@@ -1,41 +1,4 @@
-var budgetCanvas = document.getElementById("budgetChart");
-Chart.defaults.color = "#00184c";
 
-var budgetData = {
-    labels: [
-        "Savings",
-        "Investments",
-        "Expenses",
-    ],
-    datasets: [
-        {
-            data: [1,2,3],
-            backgroundColor: [
-                "#8ac926",
-                "#ffca3a",
-                "#ff595e",
-            ]
-        }]
-};
-
-var pieChart = new Chart(budgetCanvas, {
-  type: 'doughnut',
-  data: budgetData,
-  options: {
-      plugins: {
-          legend: {
-              labels: {
-                  // This more specific font property overrides the global property
-                  font: {
-                      size: 24,
-                      family: 'Source Sans Pro', 
-                  }
-              }
-          }
-      }
-  }  
-
-});
 //function to set an item in local storage, just call like this setItem("entryData",JSON.stringify(entryArray)); for example
 const setItem = (key, item) => {
     localStorage.setItem(key, item);
@@ -54,7 +17,10 @@ const getItem = (key) => {
 
 //the array is then set in localstorage with the setItem function
 //the item is console logged using getItem to retrieve it from local storage to confirm its been stored
-
+function resetData(){
+    window.localStorage.clear();
+    document.location.reload(true);
+}
 function getData(){
     let inputDescription = document.getElementById("desc");
     let inputValue = document.getElementById("valueNum");
@@ -100,12 +66,51 @@ const entries = getItem("allEntries")
   displayData=displayData.join("");
   tableDiv.innerHTML = displayData;
 });
+
 window.addEventListener('DOMContentLoaded', function(){
     let entries = getItem("allEntries");
     const budget = document.getElementById('budgetNum');
     let totalSavings = 0;
     let totalInvestments = 0;
     let totalExpenses = 0;
+
+    var budgetCanvas = document.getElementById("budgetChart");
+    Chart.defaults.color = "#00184c";
+    var budgetData = {
+    labels: [
+        "Savings",
+        "Investments",
+        "Expenses",
+    ],
+    datasets: [
+        {
+            data: [1,1,1],
+            backgroundColor: [
+                "#8ac926",
+                "#ffca3a",
+                "#ff595e",
+            ]
+        }]
+};
+
+var pieChart = new Chart(budgetCanvas, {
+  type: 'doughnut',
+  data: budgetData,
+  options: {
+      plugins: {
+          legend: {
+              labels: {
+                  // This more specific font property overrides the global property
+                  font: {
+                      size: 24,
+                      family: 'Source Sans Pro', 
+                  }
+              }
+          }
+      }
+  }  
+
+});
     for(entries of entries){
         // budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
         if (entries.radioChecked == "savings"){
@@ -113,10 +118,11 @@ window.addEventListener('DOMContentLoaded', function(){
         }
         else if(entries.radioChecked == "investment"){
             totalInvestments += parseInt(entries.inputValue);
-        }else if(entries.radioChecked == "expense"){
+        }
+        else if(entries.radioChecked == "expense"){
             totalExpenses += parseInt(entries.inputValue);
         }
-    let budgetNum = totalSavings + totalInvestments - totalExpenses
+    let budgetNum = totalSavings - totalInvestments - totalExpenses
         if (budgetNum < 0){
             budget.style.color = "#ff595e";
             budget.innerHTML = "&nbsp" + budgetNum + " ⬇";
@@ -125,23 +131,10 @@ window.addEventListener('DOMContentLoaded', function(){
             budget.innerHTML = "&nbsp" + budgetNum + " ⬆";
         }
     }
+    var data = [totalSavings,totalInvestments,totalExpenses];
+    pieChart.data.datasets[0].data=data
+    pieChart.update();
 });
-// function updateGraph(){
-//     const item = getItem("entryData");
-//     if(item.radioChecked == "savings"){
-//         totalSavings += item.inputValue;
-//         //alert(totalSavings);
-//     }else if (type == "Investment" ){
-//         totalInvestments = value;
-//         //alert(totalInvestments);
-//     } else if (type == "Expense"){
-//         totalExpenses  = value;
-//         //alert(totalExpenses);
-//     }
-//     preventDefault();
-// }
-
-// function updateTable(){
 
 // }
 let tableDate = new Date().toLocaleString().split(',')[0];
