@@ -19,10 +19,15 @@ body{
 *{
    margin:0;
    padding:0;
+   letter-spacing: 2px;
 }
 h1,h3, h4{
     font-size: 56px;
     color: #00184c;
+}
+.mainTitle{
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
 }
 h2{
     font-size: 32px;
@@ -46,7 +51,6 @@ h2{
     margin-left: -5%;
 }
 #myChart text {
-
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
 }
@@ -65,9 +69,7 @@ h2{
     border-radius: 10px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
-    box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
-    -webkit-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
-    -moz-box-shadow: -1px 10px 19px 0px rgba(0,0,0,0.51);
+
 }
 .budgetChart{
     font-family: 'Source Sans Pro', sans-serif!important;
@@ -82,9 +84,63 @@ h2{
     align-items: center;
     justify-content: center;
 }
-table{
-    border-collapse: collapse;
+.formDiv{
+    justify-content: center;
+    width: 25%;
+    text-align: center;
+    margin-left: 37.5%;
+    font-family: 'Bebas Neue', cursive;
 }
-tr{
-    border-bottom: 1px solid #00184c;
+label{
+    color: #00184c;
+    font-size: 20px;
+}
+input[type='text'], [type='number']{
+    width: 100%;
+    font-family: 'Bebas Neue', cursive;
+    border: solid 2px #3872a8;
+    color: #3872a8;
+    font-size: 20px;
+}
+
+.thDiv{
+    margin-top: 2%;
+}
+.thDiv table th{
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    table-layout: fixed;
+    width: 100%;
+    padding: 8px;
+    color: #00184c;
+}
+table {
+  font-family: arial, sans-serif;
+  width: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #2b506f;
+  font-size: 20px;
+  font-weight: 900;
+  table-layout: fixed;
+  text-align: left;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #3872a8;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+button{
+  margin-top: 3%;
+  background: none;
+  border: solid 2px #3872a8;
+  color: #3872a8;
+  cursor: pointer;
+  width: 25%;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
 }

@@ -24,11 +24,11 @@
         </div>
     </div>
     <div class="main">
-        <h1> Track Your Budget</h1>
+        <h1 class="mainTitle"> Track Your Budget</h1>
         <h2>expense type</h2>
-        <section class="contact-form">
+        <div class="formDiv">
             <form class = "form">
-                <input type="radio" name="radio" id="savings" value="savings" />
+                <input type="radio" name="radio" id="savings" value="savings"/>
                 <label for="savings">Savings</label>
 
                 <input type="radio" name="radio" id="investment" value="investment" />
@@ -36,15 +36,26 @@
 
                 <input type="radio" name="radio" id="expense" value="expense" />
                 <label for="expense">Expense</label>
-                
+                <br>
                 <label for="desc">Description</label>
-                <input name="text" type="text" id="desc" placeholder="Description">
+                <input name="text" type="text" id="desc">
                 <label for="amnt">value</label>
                 <input name="valueNum" id="valueNum" type="number" required>
-                <button onclick="getData()" type="button">✓</button>
+                <button onclick="getData()" type="button" alt="submit">✓</button>
             </form>
-        </section>
+        </div>
+        <div class="thDiv">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </table>
+        </div>
         <div class="table">
+
         </div>
     </div>
     <script src="app.js"></script>

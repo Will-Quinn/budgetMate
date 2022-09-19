@@ -78,8 +78,28 @@ function getData(){
     existingEntries.push(entry);
     existingEntries = existingEntries.map((item, index) => ({ ...item, "id": index + 1 }))
     setItem("allEntries", JSON.stringify(existingEntries));
+    document.location.reload(true)
 }  
 
+const tableDiv = document.querySelector('.table');
+
+window.addEventListener('DOMContentLoaded', function(){
+const entries = getItem("allEntries")
+  let displayData = entries.map(function(item){//parameter item JSON.stringify(Array.from(map.entries()));
+    return `<table class="demo">
+          <tbody>
+          <tr>
+              <td>${item.date}</td>
+              <td>${item.radioChecked}</td>
+              <td>${item.inputDescription}</td>
+              <td>$${item.inputValue}</td>
+          </tr>
+          </tbody>
+      </table>`;
+  })
+  displayData=displayData.join("");
+  tableDiv.innerHTML = displayData;
+});
 // function updateGraph(){
 //     const item = getItem("entryData");
 //     if(item.radioChecked == "savings"){
