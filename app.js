@@ -85,7 +85,7 @@ const tableDiv = document.querySelector('.table');
 
 window.addEventListener('DOMContentLoaded', function(){
 const entries = getItem("allEntries")
-  let displayData = entries.map(function(item){//parameter item JSON.stringify(Array.from(map.entries()));
+  let displayData = entries.map(function(item){
     return `<table class="demo">
           <tbody>
           <tr>
@@ -99,6 +99,32 @@ const entries = getItem("allEntries")
   })
   displayData=displayData.join("");
   tableDiv.innerHTML = displayData;
+});
+window.addEventListener('DOMContentLoaded', function(){
+    let entries = getItem("allEntries");
+    const budget = document.getElementById('budgetNum');
+    let totalSavings = 0;
+    let totalInvestments = 0;
+    let totalExpenses = 0;
+    for(entries of entries){
+        // budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
+        if (entries.radioChecked == "savings"){
+            totalSavings += parseInt(entries.inputValue);
+        }
+        else if(entries.radioChecked == "investment"){
+            totalInvestments += parseInt(entries.inputValue);
+        }else if(entries.radioChecked == "expense"){
+            totalExpenses += parseInt(entries.inputValue);
+        }
+    let budgetNum = totalSavings + totalInvestments - totalExpenses
+        if (budgetNum < 0){
+            budget.style.color = "#ff595e";
+            budget.innerHTML = "&nbsp" + budgetNum + " ⬇";
+        }else{
+            budget.style.color = "#8ac926";
+            budget.innerHTML = "&nbsp" + budgetNum + " ⬆";
+        }
+    }
 });
 // function updateGraph(){
 //     const item = getItem("entryData");
@@ -154,6 +180,6 @@ date.textContent = `${month} ${year}`
 const day = currentDate.getDay();
 
 const budget = document.getElementById('budgetNum');
-budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
+// budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
 
 
