@@ -101,7 +101,9 @@ input[type='text'], [type='number']{
     color: #3872a8;
     font-size: 20px;
 }
-
+ul{
+    list-style: none;
+}
 .thDiv{
     margin-top: 2%;
 }
