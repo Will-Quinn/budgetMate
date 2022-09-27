@@ -52,18 +52,27 @@ function getData(){
     document.location.reload(true)
 }  
 
+function updateRow(){
+    alert("update");
+}
+function deleteRow(){
+    alert("delete");
+}
 //this simply shows the table of entries when the dom content has loaded.
 const tableDiv = document.querySelector('.table');
+const edit = `<button class="actionButtons" type="button" onclick="updateRow()">Update</button>`;
+const del = `<button class="actionButtons" type="button" onclick="deleteRow()">Delete</button>`;
 window.addEventListener('DOMContentLoaded', function(){
 const entries = getItem("allEntries")
   let displayData = entries.map(function(item){
-    return `<table class="demo">
+    return `<table>
           <tbody>
           <tr>
-              <td>${item.date}</td>
-              <td>${item.radioChecked}</td>
-              <td>${item.inputDescription}</td>
-              <td>$${item.inputValue}</td>
+              <td class="dateCol">${item.date}</td>
+              <td class="expCol">${item.radioChecked}</td>
+              <td class="descCol">${item.inputDescription}</td>
+              <td class="valCol">$${item.inputValue}</td>
+              <td class="actions">${edit}${del}</td>
           </tr>
           </tbody>
       </table>`;

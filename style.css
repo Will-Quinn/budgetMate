@@ -104,6 +104,13 @@ input[type='text'], [type='number']{
 ul{
     list-style: none;
 }
+.actions{
+    text-align: center;
+}
+.actionButtons{
+    width: max-content;
+    margin-inline: 3%;
+}
 .thDiv{
     margin-top: 2%;
 }
