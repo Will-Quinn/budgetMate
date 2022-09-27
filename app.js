@@ -17,10 +17,16 @@ const getItem = (key) => {
 
 //the array is then set in localstorage with the setItem function
 //the item is console logged using getItem to retrieve it from local storage to confirm its been stored
+
+//button to reset all data
 function resetData(){
     window.localStorage.clear();
     document.location.reload(true);
 }
+
+//the getData gets called on form submission. it gets the values, checks to see what radio value is selected through a for loop. checks to see if there are already existing entries,
+//if there are none, an array is created as well as an entry object, otherwise entries are entered into localStorage in existing entries. this is to get around
+//localStorage not allowing you to enter items under the same array etc. the function then reloads the page to show all the updates.
 function getData(){
     let inputDescription = document.getElementById("desc");
     let inputValue = document.getElementById("valueNum");
@@ -28,7 +34,6 @@ function getData(){
     let radioChecked;
     for (let i = 0; i < radios.length; i++) {
         if (radios[i].type === "radio" && radios[i].checked) {
-            // get value, set checked flag or do whatever you need to
             radioChecked = radios[i].value;       
         }
     }
@@ -47,8 +52,8 @@ function getData(){
     document.location.reload(true)
 }  
 
+//this simply shows the table of entries when the dom content has loaded.
 const tableDiv = document.querySelector('.table');
-
 window.addEventListener('DOMContentLoaded', function(){
 const entries = getItem("allEntries")
   let displayData = entries.map(function(item){
@@ -67,6 +72,7 @@ const entries = getItem("allEntries")
   tableDiv.innerHTML = displayData;
 });
 
+//this simply takes the data from local storage, does the required calculations to them and updates the chart values with the entry values.
 window.addEventListener('DOMContentLoaded', function(){
     let entries = getItem("allEntries");
     const budget = document.getElementById('budgetNum');
