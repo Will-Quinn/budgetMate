@@ -83,16 +83,20 @@ function updateRow() {
 }
 
 function deleteRow(elm) {
-  //this part removes item and updates localStorage
+  //added id to table in dom so I could grab a value that uniquely identifies each row on the table. (this is because if I used anything else to identify a row there could be multiple matches.).
   var rowFinder = $(elm).closest("tr").find("td:first-child").text();
   console.log(rowFinder);
+  //get allEntries from local storage
   const delEntries = JSON.parse(localStorage.getItem("allEntries"));
   console.log(delEntries);
+  //filter retrun a filtered array with all the entries that do not match with the id given from rowfinder
   const filtered = delEntries.filter(function (item) {
     return item.id != rowFinder;
   });
   console.log(filtered);
+  //set all the filtered items into local storage thereby "deleting" the row that was filtered out.
   localStorage.setItem("allEntries", JSON.stringify(filtered));
+  //reload the page to show new dom and chart
   document.location.reload(true);
 }
 
