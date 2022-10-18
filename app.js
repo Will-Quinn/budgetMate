@@ -19,8 +19,17 @@ const getItem = (key) => {
 
 //button to reset all data
 function resetData() {
-  window.localStorage.clear();
-  document.location.reload(true);
+  function clear() {
+    window.localStorage.clear();
+    document.location.reload(true);
+  }
+  let executed = confirm(
+    "Are you sure you want to reset all the table data?, all the data will be lost forever."
+  );
+  if (executed == true) {
+    clear();
+  }
+  return 0;
 }
 
 //the getData gets called on form submission. it gets the values, checks to see what radio value is selected through a for loop. checks to see if there are already existing entries,
