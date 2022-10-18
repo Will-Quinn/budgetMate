@@ -8,6 +8,9 @@ const getItem = (key) => {
   return JSON.parse(item);
 };
 
+function reload() {
+  document.location.reload(true);
+}
 //the get data function gets the form entries using getElementById for the text/number values, for the radio value,
 //I had to select all the elements with the name radio, then loop through where type === radio and that element was checked (selected)
 
@@ -21,7 +24,7 @@ const getItem = (key) => {
 function resetData() {
   function clear() {
     window.localStorage.clear();
-    document.location.reload(true);
+    reload();
   }
   let executed = confirm(
     "Are you sure you want to reset all the table data?, all the data will be lost forever."
@@ -60,7 +63,7 @@ function getData() {
     id: index + 1,
   }));
   setItem("allEntries", JSON.stringify(existingEntries));
-  document.location.reload(true);
+  reload();
 }
 
 //this simply shows the table of entries when the dom content has loaded.
@@ -106,7 +109,7 @@ function deleteRow(elm) {
   //set all the filtered items into local storage thereby "deleting" the row that was filtered out.
   localStorage.setItem("allEntries", JSON.stringify(filtered));
   //reload the page to show new dom and chart
-  document.location.reload(true);
+  reload();
 }
 
 //this simply takes the data from local storage, does the required calculations to them and updates the chart values with the entry values.
@@ -223,5 +226,5 @@ function windowOnClick(event) {
 }
 
 trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", reload());
 window.addEventListener("click", windowOnClick);
