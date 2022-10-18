@@ -66,7 +66,7 @@ function getData() {
 //this simply shows the table of entries when the dom content has loaded.
 const tableDiv = document.querySelector(".table");
 const del = `<button class="actionButtons" id="delBtn" type="button"  onclick="deleteRow(this)">Delete</button>`;
-const edit = `<button class="actionButtons" type="button" onclick="updateRow(this)">Update</button>`;
+const edit = `<button class="actionButtons" id="updateBtn" type="button" onclick="toggleModal()">Update</button>`;
 window.addEventListener("DOMContentLoaded", function () {
   const entries = getItem("allEntries");
   let displayData = entries.map(function (item) {
@@ -93,7 +93,7 @@ function updateRow() {
 
 function deleteRow(elm) {
   //added id to table in dom so I could grab a value that uniquely identifies each row on the table. (this is because if I used anything else to identify a row there could be multiple matches.).
-  var rowFinder = $(elm).closest("tr").find("td:first-child").text();
+  let rowFinder = $(elm).closest("tr").find("td:first-child").text();
   console.log(rowFinder);
   //get allEntries from local storage
   const delEntries = JSON.parse(localStorage.getItem("allEntries"));
@@ -207,3 +207,21 @@ const day = currentDate.getDay();
 
 const budget = document.getElementById("budgetNum");
 // budget.innerHTML = totalSavings - totalInvestments - totalExpenses;
+
+const modal = document.querySelector(".modal");
+const trigger = document.querySelector("#updateBtn");
+const closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+  modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+  if (event.target === modal) {
+    toggleModal();
+  }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
